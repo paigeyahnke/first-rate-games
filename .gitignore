@@ -14,3 +14,8 @@
 
 # IntelliJ
 /out/
+
+# Maven
+/target/
+/log/
+/lib/
