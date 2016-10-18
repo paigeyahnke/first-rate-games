@@ -1,45 +1,54 @@
 [
   {
+    "id": 1,
     "name": "Dark Souls III",
     "genre": "RPG",
     "year": 2016
   },
   {
+    "id": 2,
     "name": "Pillars of Eternity",
     "genre": "RPG",
     "year": 2015
   },
   {
+    "id": 3,
     "name": "Dragon Age: Inquisition",
     "genre": "RPG",
     "year": 2014
   },
   {
+    "id": 4,
     "name": "Pro Evolution Soccer 2017",
     "genre": "Sports",
     "year": 2016
   },
   {
+    "id": 5,
     "name": "FIFA 16",
     "genre": "Sports",
     "year": 2015
   },
   {
+    "id": 6,
     "name": "FIFA 15",
     "genre": "Sports",
     "year": 2014
   },
   {
+    "id": 7,
     "name": "Doom",
     "genre": "FPS",
     "year": 2016
   },
   {
+    "id": 8,
     "name": "Battlefield Harline",
     "genre": "FPS",
     "year": 2015
   },
   {
+    "id": 9,
     "name": "Titanfall",
     "genre": "FPS",
     "year": 2014
