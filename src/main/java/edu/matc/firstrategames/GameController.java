@@ -27,7 +27,7 @@ public class GameController {
     // The Java method will process HTTP GET requests
     @GET
     // The Java method will produce content identified by the MIME Media type "text/plain"
-    @Produces("text/plain")
+    @Produces("application/json")
     public Response getMessage(@QueryParam("genre") String genre,
                                @QueryParam("year") Integer year) throws IOException {
         logger.info("Genre: " + genre);
