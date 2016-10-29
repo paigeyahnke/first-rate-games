@@ -20,15 +20,14 @@ import java.util.List;
 /**
  * Created by Bo on 10/17/2016.
  */
-@Path("/game")
+@Path("/top")
 public class GameController {
     private final Logger logger = Logger.getLogger(this.getClass());
 
     // The Java method will process HTTP GET requests
     @GET
     // The Java method will produce content identified by the MIME Media type "text/plain"
-    @Produces(MediaType.APPLICATION_JSON)
-    @Path("/top")
+    @Produces("text/plain")
     public Response getMessage(@QueryParam("genre") String genre,
                                @QueryParam("year") Integer year) throws IOException {
         logger.info("Genre: " + genre);
@@ -52,7 +51,12 @@ public class GameController {
             }
         }
 
-        // return in response
-        return Response.status(200).entity(filteredGames.toArray()).build();
+        String[] testArray = new String[filteredGames.size()];
+        for (int i = 0; i < filteredGames.size(); i++) {
+            testArray[i] = filteredGames.get(i).toString();
+        }
+        String result = String.join(",", testArray);
+        return Response.status(200).entity(result).build();
     }
 }
+
