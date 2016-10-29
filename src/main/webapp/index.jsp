@@ -10,7 +10,6 @@
 </head>
 
 <body>
-
     <form action="/game/top" method="get">
         <h2>First Rate Games</h2>
 

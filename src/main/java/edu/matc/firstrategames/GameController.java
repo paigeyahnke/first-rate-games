@@ -32,6 +32,8 @@ public class GameController {
                                @QueryParam("year") Integer year) throws IOException {
         logger.info("Genre: " + genre);
         logger.info("Year: " + year);
+
+        // TODO This section needs to retrieve JSON from the igdb.com rather than from file.
         // get list of json objects from file
         ObjectMapper objectMapper = new ObjectMapper();
 
