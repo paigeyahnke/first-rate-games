@@ -7,6 +7,8 @@ Don't know what to play? Find the best in genre for any year!
 
 ## Supporting Technologies
 
+## [Project Plan](projectPlan.md)
+
 ### Team Awesomeness (name subject to change)
 - Bao Vue  
 - Bo Broadway  
