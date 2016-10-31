@@ -39,11 +39,11 @@
 ### Week 5: Nov 9 - Nov 16  
 - [ ] Write documentation  
 - [ ] Prepare for presentation  
-- [ ] Explain the problem you are solving with your service/api  
-- [ ] Show the user documentation  
-- [ ] Demonstrate the service/api  
-- [ ] Explain/walk through the code, including unit tests  
-- [ ] Discuss challenges and key learning points  
+  * Explain the problem you are solving with your service/api  
+  * Show the user documentation  
+  * Demonstrate the service/api  
+  * Explain/walk through the code, including unit tests  
+  * Discuss challenges and key learning points  
 
 
 
