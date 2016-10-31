@@ -5,9 +5,11 @@ Paige
   - [X] Create project & setup general structure  
   - [X] Set up GitHub repository  
   - [X] Set up Slack team  
+
 Bao  
   - [X] Add configuration file  
   - [X] Create first class to handle API call  
+
 Bo  
   - [X] Gather sample data (RPG, Sports, FPS)  
   - [X] Convert sample data to JSON   
@@ -21,9 +23,11 @@ Paige
   - [X] Write up project plan  
   - [X] Create front end form  
   - [x] Create journal  
+
 Bao  
   - [ ] Write problem statement  
-  - [ ] Write problem objectives  
+  - [ ] Write problem objectives 
+   
 Bo  
   - [ ] Research API  
 
