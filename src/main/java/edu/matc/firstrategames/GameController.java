@@ -1,6 +1,9 @@
 package edu.matc.firstrategames;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.mashape.unirest.http.Unirest;
+import com.mashape.unirest.http.exceptions.UnirestException;
+import com.mashape.unirest.http.HttpResponse;
 import org.apache.log4j.Logger;
 
 import javax.ws.rs.GET;
@@ -22,43 +25,53 @@ import java.util.List;
  */
 @Path("/top")
 public class GameController {
-    private final Logger logger = Logger.getLogger(this.getClass());
+    private final Logger log = Logger.getLogger(this.getClass());
 
     // The Java method will process HTTP GET requests
     @GET
-    // The Java method will produce content identified by the MIME Media type "text/plain"
-    @Produces("application/json")
+    @Produces(MediaType.APPLICATION_JSON)
     public Response getMessage(@QueryParam("genre") String genre,
                                @QueryParam("year") Integer year) throws IOException {
-        logger.info("Genre: " + genre);
-        logger.info("Year: " + year);
+        log.info("Genre: " + genre);
+        log.info("Year: " + year);
 
-        // TODO This section needs to retrieve JSON from the igdb.com rather than from file.
-        // get list of json objects from file
+        // api base url
+        String url = "https://igdbcom-internet-game-database-v1.p.mashape.com/games/";
+        // query string needed for igdb api, change limit for more results
+        String queryString = "?fields=name,genres,rating,first_release_date&limit=1&offset=0&order=rating:desc";
+        // declare additional filters from params
+        String genreFilter = "";
+        String yearFilterMin = "";
+        String yearFilterMax = "";
+        // response from igdb
+        String gameResponse = "";
+
+        // set additional filters from params
+        if (genre != null) {
+            genreFilter = "&filter[genres][eq]=" + genre;
+        }
+        if (year != null) {
+            yearFilterMin = "&filter[first_release_date][gteq]=" + Utilities.firstOfYearEpoch(year);
+            yearFilterMax = "&filter[first_release_date][lt]=" + Utilities.firstOfYearEpoch(year + 1);
+        }
+
+        // get the response from igdb
+        try {
+            HttpResponse<String> response = Unirest.get(url + queryString + genreFilter + yearFilterMin + yearFilterMax)
+                    .header("X-Mashape-Key", "JtIfKzpDYlmshIqjqfbPp0v9uOngp1Vi6W8jsnOgwGGBqCadVb")
+                    .header("Accept", "application/json")
+                    .asString();
+            gameResponse = response.getBody();
+        } catch (UnirestException e) {
+            log.error("API Error", e);
+        }
+
+        // object mapper to map response to Game class
         ObjectMapper objectMapper = new ObjectMapper();
+        Game[] game = objectMapper.readValue(gameResponse, Game[].class);
 
-        ClassLoader classloader = Thread.currentThread().getContextClassLoader();
-        InputStream is = classloader.getResourceAsStream("sampleData.json");
-
-        Game[] games = objectMapper.readValue(is, Game[].class);
-        List<Game> filteredGames = new ArrayList<Game>(Arrays.asList(games));
-
-        // loop through games, filtering out "non-matches"
-        for (Game game : games) {
-            if (genre != null && !game.getGenre().equals(genre)) {
-                filteredGames.remove(game);
-            }
-            if (year != null && game.getYear() != year) {
-                filteredGames.remove(game);
-            }
-        }
-
-        String[] testArray = new String[filteredGames.size()];
-        for (int i = 0; i < filteredGames.size(); i++) {
-            testArray[i] = filteredGames.get(i).toString();
-        }
-        String result = String.join(",", testArray);
-        return Response.status(200).entity(result).build();
+        // return game json
+        return Response.status(200).entity(game).build();
     }
 }
 

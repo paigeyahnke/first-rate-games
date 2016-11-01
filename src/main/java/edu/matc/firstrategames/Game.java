@@ -1,55 +1,142 @@
 package edu.matc.firstrategames;
 
-/**
- * Created by Bo on 10/17/2016.
- */
+import java.util.ArrayList;
+import java.util.List;
+import javax.annotation.Generated;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+
+@JsonInclude(JsonInclude.Include.NON_NULL)
+@Generated("org.jsonschema2pojo")
+@JsonPropertyOrder({
+        "id",
+        "name",
+        "rating",
+        "genres",
+        "first_release_date"
+})
 public class Game {
 
-    private int id;
+    @JsonProperty("id")
+    private Integer id;
+    @JsonProperty("name")
     private String name;
-    private String genre;
-    private int year;
+    @JsonProperty("rating")
+    private Double rating;
+    @JsonProperty("genres")
+    private List<Integer> genres = new ArrayList<Integer>();
+    @JsonProperty("first_release_date")
+    private long firstReleaseDate;
 
-    public int getId() {
+    /**
+     *
+     * @return
+     * The id
+     */
+    @JsonProperty("id")
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    /**
+     *
+     * @param id
+     * The id
+     */
+    @JsonProperty("id")
+    public void setId(Integer id) {
         this.id = id;
     }
 
+    /**
+     *
+     * @return
+     * The name
+     */
+    @JsonProperty("name")
     public String getName() {
         return name;
     }
 
+    /**
+     *
+     * @param name
+     * The name
+     */
+    @JsonProperty("name")
     public void setName(String name) {
         this.name = name;
     }
 
-    public String getGenre() {
-        return genre;
+    /**
+     *
+     * @return
+     * The rating
+     */
+    @JsonProperty("rating")
+    public Double getRating() {
+        return rating;
     }
 
-    public void setGenre(String genre) {
-        this.genre = genre;
+    /**
+     *
+     * @param rating
+     * The rating
+     */
+    @JsonProperty("rating")
+    public void setRating(Double rating) {
+        this.rating = rating;
     }
 
-    public int getYear() {
-        return year;
+    /**
+     *
+     * @return
+     * The genres
+     */
+    @JsonProperty("genres")
+    public List<Integer> getGenres() {
+        return genres;
     }
 
-    public void setYear(int year) {
-        this.year = year;
+    /**
+     *
+     * @param genres
+     * The genres
+     */
+    @JsonProperty("genres")
+    public void setGenres(List<Integer> genres) {
+        this.genres = genres;
+    }
+
+    /**
+     *
+     * @return
+     * The firstReleaseDate
+     */
+    @JsonProperty("first_release_date")
+    public long getFirstReleaseDate() {
+        return firstReleaseDate;
+    }
+
+    /**
+     *
+     * @param firstReleaseDate
+     * The first_release_date
+     */
+    @JsonProperty("first_release_date")
+    public void setFirstReleaseDate(long firstReleaseDate) {
+        this.firstReleaseDate = firstReleaseDate;
     }
 
     @Override
     public String toString() {
-        return "{" +
+        return "Game{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", genre='" + genre + '\'' +
-                ", year=" + year +
+                ", rating=" + rating +
+                ", genres=" + genres +
+                ", firstReleaseDate=" + firstReleaseDate +
                 '}';
     }
-
 }

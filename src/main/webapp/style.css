@@ -39,6 +39,20 @@ button {
 
 #fields {
     text-align: left;
-    width: 7.75em;
+    width: 130px;
     margin: 1em auto;
+}
+
+pre {
+    background-color: #404040;
+    border-radius: 2px;
+    text-align: left;
+    padding: 14px;
+}
+
+h2.response {
+    color: #404040;
+}
+.response {
+    display: none;
 }
