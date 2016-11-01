@@ -5,7 +5,7 @@ Don't know what to play? Find the best in genre for any year!
 First Rate Games is a web service that will give user's the number one games based on game genres for any given year. 
 Our service is geared towards both novice and expert gamers. Regardless of one's gaming background, having 
 historical gaming information will give that person ideas on other games they may be interested in as well as 
-understanding the evolution of each game genre. Our service fulfills the need to for this unique
+understanding the evolution of each game genre. Our service fulfills the need for this unique
 information without the pain of manually typing this information into a search engine. 
 
 
