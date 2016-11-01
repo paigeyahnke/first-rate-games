@@ -18,6 +18,8 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 })
 public class Game {
 
+    // TODO rework to return real dates (just the year) and possibly genre
+
     @JsonProperty("id")
     private Integer id;
     @JsonProperty("name")

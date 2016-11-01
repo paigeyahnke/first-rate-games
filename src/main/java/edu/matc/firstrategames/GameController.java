@@ -27,6 +27,7 @@ import java.util.List;
 public class GameController {
     private final Logger log = Logger.getLogger(this.getClass());
 
+    // TODO use properties file to clean up hard coded data
     // The Java method will process HTTP GET requests
     @GET
     @Produces(MediaType.APPLICATION_JSON)
