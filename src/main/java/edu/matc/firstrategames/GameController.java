@@ -35,6 +35,8 @@ public class GameController {
                                @QueryParam("year") Integer year) throws IOException {
         log.info("Genre: " + genre);
         log.info("Year: " + year);
+        log.info("Epoch Year Min: " + Utilities.firstOfYearEpoch(year));
+        log.info("Epoch Year Max: " + Utilities.firstOfYearEpoch(year + 1));
 
         // api base url
         String url = "https://igdbcom-internet-game-database-v1.p.mashape.com/games/";
@@ -52,7 +54,7 @@ public class GameController {
             genreFilter = "&filter[genres][eq]=" + genre;
         }
         if (year != null) {
-            yearFilterMin = "&filter[first_release_date][gteq]=" + Utilities.firstOfYearEpoch(year);
+            yearFilterMin = "&filter[first_release_date][gte]=" + Utilities.firstOfYearEpoch(year);
             yearFilterMax = "&filter[first_release_date][lt]=" + Utilities.firstOfYearEpoch(year + 1);
         }
 
