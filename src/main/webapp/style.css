@@ -5,14 +5,19 @@ body {
     font-family: Arial, Helvetica, sans-serif;
 }
 
-form {
+form, #responseJSON {
     padding: 1em;
-    width: 14em;
+    width: 16em;
     display: inline-block;
     margin: 1em;
-    background-color: grey;
     border-radius: 1.5em;
     background-color: #404040;
+}
+
+#responseJSON {
+    width: 20.5em;
+    display: none;
+    margin: 1em auto;
 }
 
 h2 {
@@ -28,6 +33,7 @@ label {
 input {
     width: 5.75em;
     border-radius: .25em;
+    padding-left: .5em;
 }
 
 button {
@@ -39,20 +45,13 @@ button {
 
 #fields {
     text-align: left;
-    width: 130px;
+    width: 8em;
     margin: 1em auto;
 }
 
 pre {
-    background-color: #404040;
-    border-radius: 2px;
+    display: block;
+    width: 100%;
     text-align: left;
-    padding: 14px;
-}
-
-h2.response {
-    color: #404040;
-}
-.response {
-    display: none;
+    padding: 0 1em 1em 1em;
 }

@@ -22,7 +22,7 @@ for demonstration purposes
             e.preventDefault();
 
             // placeholder text while waiting on response
-            $('.response').fadeIn();
+            $('#responseJSON').fadeIn();
             $('#response').text('loading...')
 
             // display json response
@@ -61,8 +61,12 @@ for demonstration purposes
 
         <button>Get Games</button>
     </form>
-    <h2 class="response">Response</h2>
-    <pre id="response" class="response"></pre>
+
+    <div id="responseJSON">
+        <h2>JSON Response</h2>
+        <pre id="response"></pre>
+    </div>
+
 </body>
 
 </html>
