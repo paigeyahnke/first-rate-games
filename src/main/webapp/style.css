@@ -6,8 +6,7 @@ body {
 }
 
 form, #responseJSON {
-    padding: 1em;
-    width: 16em;
+    padding: 1.5em;
     display: inline-block;
     margin: 1em;
     border-radius: 1.5em;
@@ -15,8 +14,7 @@ form, #responseJSON {
 }
 
 #responseJSON {
-    width: 20.5em;
-    display: none;
+    padding: 1em;
     margin: 1em auto;
 }
 
@@ -54,4 +52,9 @@ pre {
     width: 100%;
     text-align: left;
     padding: 0 1em 1em 1em;
+}
+
+#spinner {
+    width: 10em;
+    display: block;
 }
