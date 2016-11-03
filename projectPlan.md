@@ -35,6 +35,7 @@
 ### Week 4: Nov 2 - Nov 9  
 **Paige**  
 - [ ] Format year
+- [ ] Add ability to choose json vs html (form)
 - [ ] Add HTML output
 - [ ] Auto-fill genres
 
@@ -44,6 +45,7 @@
 
 **Bo**  
 - [ ] Move hard coded data to properties files
+- [ ] Update game controller to have param for response type
 - [ ] API Call to retrieve list of genres
 - [ ] Change to return random best game
 
