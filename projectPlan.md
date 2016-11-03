@@ -25,15 +25,29 @@
 - [x] Create journal  
 
 **Bao**  
-- [ ] Write problem statement  
-- [ ] Write problem objectives 
+- [X] Write problem statement  
+- [X] Write problem objectives 
 
 **Bo**  
-- [ ] Research API  
+- [X] Research API  
+- [X] Map objects to JSON 
 
 ### Week 4: Nov 2 - Nov 9  
-- [ ] Map objects to JSON  
+**Paige**  
+- [ ] Format year
+- [ ] Add HTML output
+- [ ] Auto-fill genres
+
+**Bao**  
 - [ ] Write unit tests  
+- [ ] Break code into testable sections
+
+**Bo**  
+- [ ] Move hard coded data to properties files
+- [ ] API Call to retrieve list of genres
+- [ ] Change to return random best game
+
+**All**  
 - [ ] Deploy to digital ocean  
 
 ### Week 5: Nov 9 - Nov 16  
