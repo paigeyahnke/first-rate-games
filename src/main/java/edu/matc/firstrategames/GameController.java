@@ -73,6 +73,8 @@ public class GameController {
         ObjectMapper objectMapper = new ObjectMapper();
         Game[] game = objectMapper.readValue(gameResponse, Game[].class);
 
+
+
         // return game json
         return Response.status(200).entity(game).build();
     }
