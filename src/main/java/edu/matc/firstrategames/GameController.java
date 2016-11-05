@@ -27,7 +27,8 @@ public class GameController {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Response getMessage(@QueryParam("genre") Integer genre,
-                               @QueryParam("year") Integer year) throws IOException {
+                               @QueryParam("year") Integer year,
+                               @QueryParam("responseType") String responseType) throws IOException {
         log.info("Genre: " + genre + " | Year: " + year);
         log.info("Epoch Year Min: " + Utilities.firstOfYearEpoch(year));
         log.info("Epoch Year Max: " + Utilities.firstOfYearEpoch(year + 1));
