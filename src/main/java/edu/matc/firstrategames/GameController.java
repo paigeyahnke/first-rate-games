@@ -26,7 +26,7 @@ public class GameController {
     // The Java method will process HTTP GET requests
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getMessage(@QueryParam("genre") Integer genre,
+    public Response getMessage(@QueryParam("genre") String genre,
                                @QueryParam("year") Integer year,
                                @QueryParam("responseType") String responseType) throws IOException {
         log.info("Genre: " + genre + " | Year: " + year);
@@ -39,6 +39,12 @@ public class GameController {
         try(InputStream resourceStream = loader.getResourceAsStream("properties.properties")) {
             log.info("Loading properties...");
             properties.load(resourceStream);
+        }
+        // load genres properties
+        Properties genres = new Properties();
+        try(InputStream resourceStream = loader.getResourceAsStream("genres.properties")) {
+            log.info("Loading genres properties...");
+            genres.load(resourceStream);
         }
 
         // initialize properties
@@ -62,7 +68,7 @@ public class GameController {
                     .queryString("fields", fields)
                     .queryString("limit", limit)
                     .queryString("order", orderBy)
-                    .queryString("filter[genres][eq]", genre)
+                    .queryString("filter[genres][eq]", genres.getProperty(genre))
                     .queryString("filter[first_release_date][gte]", Utilities.firstOfYearEpoch(year))
                     .queryString("filter[first_release_date][lt]", Utilities.firstOfYearEpoch(year + 1))
                     // headers

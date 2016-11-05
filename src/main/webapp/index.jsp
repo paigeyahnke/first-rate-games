@@ -50,11 +50,11 @@ for demonstration purposes
             <br />
 
             <label for="genre">Genre</label>
-            <!-- Values are that of igdb's genre ids -->
+            <!-- Iterate through using every KEY that exists in the genres.properties file -->
             <select name="genre" id="genre">
-                <option value="5" selected="selected">FPS</option>
-                <option value="12">RPG</option>
-                <option value="14">Sports</option>
+                <option value="shooter" selected="selected">Shooter</option>
+                <option value="rpg">RPG</option>
+                <option value="sports">Sports</option>
             </select>
         </div>
 
