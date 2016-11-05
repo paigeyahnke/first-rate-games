@@ -44,9 +44,9 @@
 - [ ] Break code into testable sections
 
 **Bo**  
-- [ ] Move hard coded data to properties files
-- [ ] Update game controller to have param for response type
-- [ ] API Call to retrieve list of genres
+- [X] Move hard coded data to properties files
+- [X] Update game controller to have param for response type
+- [X] Create genres.properties files to retrieve genre IDs using genre strings
 - [ ] Change to return random best game
 
 **All**  
