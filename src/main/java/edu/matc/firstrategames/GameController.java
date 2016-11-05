@@ -12,12 +12,8 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.io.*;
+import java.util.Properties;
 
 
 /**
@@ -27,56 +23,66 @@ import java.util.List;
 public class GameController {
     private final Logger log = Logger.getLogger(this.getClass());
 
-    // TODO use properties file to clean up hard coded data
     // The Java method will process HTTP GET requests
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getMessage(@QueryParam("genre") String genre,
+    public Response getMessage(@QueryParam("genre") Integer genre,
                                @QueryParam("year") Integer year) throws IOException {
-        log.info("Genre: " + genre);
-        log.info("Year: " + year);
+        log.info("Genre: " + genre + " | Year: " + year);
         log.info("Epoch Year Min: " + Utilities.firstOfYearEpoch(year));
         log.info("Epoch Year Max: " + Utilities.firstOfYearEpoch(year + 1));
 
-        // api base url
-        String url = "https://igdbcom-internet-game-database-v1.p.mashape.com/games/";
-        // query string needed for igdb api, change limit for more results
-        String queryString = "?fields=name,genres,rating,first_release_date&limit=1&offset=0&order=rating:desc";
-        // declare additional filters from params
-        String genreFilter = "";
-        String yearFilterMin = "";
-        String yearFilterMax = "";
+        // load properties
+        ClassLoader loader = Thread.currentThread().getContextClassLoader();
+        Properties properties = new Properties();
+        try(InputStream resourceStream = loader.getResourceAsStream("properties.properties")) {
+            log.info("Loading properties...");
+            properties.load(resourceStream);
+        }
+
+        // initialize properties
+        String url     = properties.getProperty("igdbURL");
+        String fields  = properties.getProperty("igdbFields");
+        String limit   = properties.getProperty("igdbLimit");
+        String orderBy = properties.getProperty("igdbOrderBy");
+        String key     = properties.getProperty("igdbXMashapeKey");
+        String accept  = properties.getProperty("igdbAccept");
+
         // response from igdb
         String gameResponse = "";
 
-        // set additional filters from params
-        if (genre != null) {
-            genreFilter = "&filter[genres][eq]=" + genre;
-        }
-        if (year != null) {
-            yearFilterMin = "&filter[first_release_date][gte]=" + Utilities.firstOfYearEpoch(year);
-            yearFilterMax = "&filter[first_release_date][lt]=" + Utilities.firstOfYearEpoch(year + 1);
-        }
-
         // get the response from igdb
         try {
-            HttpResponse<String> response = Unirest.get(url + queryString + genreFilter + yearFilterMin + yearFilterMax)
-                    .header("X-Mashape-Key", "JtIfKzpDYlmshIqjqfbPp0v9uOngp1Vi6W8jsnOgwGGBqCadVb")
-                    .header("Accept", "application/json")
+            log.info("Getting response from igdb.com...");
+            log.info("Sending Url: " + url);
+            log.info("Accept: " + accept + " | Key: " + key);
+            HttpResponse<String> response = Unirest.get(url)
+                    // filters
+                    .queryString("fields", fields)
+                    .queryString("limit", limit)
+                    .queryString("order", orderBy)
+                    .queryString("filter[genres][eq]", genre)
+                    .queryString("filter[first_release_date][gte]", Utilities.firstOfYearEpoch(year))
+                    .queryString("filter[first_release_date][lt]", Utilities.firstOfYearEpoch(year + 1))
+                    // headers
+                    .header("X-Mashape-Key", key)
+                    .header("Accept", accept)
                     .asString();
             gameResponse = response.getBody();
+            log.info("Response: " + gameResponse);
         } catch (UnirestException e) {
-            log.error("API Error", e);
+            log.error("IGDB API Error", e);
         }
 
         // object mapper to map response to Game class
+        log.info("Mapping json object to Game object...");
         ObjectMapper objectMapper = new ObjectMapper();
         Game[] game = objectMapper.readValue(gameResponse, Game[].class);
 
-
-
         // return game json
         return Response.status(200).entity(game).build();
+
     }
+
 }
 
