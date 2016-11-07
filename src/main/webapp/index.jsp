@@ -23,9 +23,20 @@ for demonstration purposes
             // stops form from taking the user to a new page
             e.preventDefault();
 
-            // placeholder text while waiting on response
-            $('#responseJSON').fadeIn();
-            $('#response').text('loading...')
+            var responseDiv = $("#responseJSON");
+
+            if (!responseDiv.length) {
+                responseDiv = $("<div>").attr("id", "responseJSON");
+                responseDiv.append($("<h2>").text("Response"));
+                responseDiv.append($("<pre>").attr("id", "response"));
+                $("body").append(responseDiv);
+                $('#responseJSON').fadeIn();
+            } else {
+                $('#response').text("");
+            }
+
+            // loading symbol while waiting on response
+            $('#response').append("<img src='spinner.gif' id='spinner'/>");
 
             // display json response
             $.get('/game/top', $('#game-form').serialize(), function (data) {
@@ -37,7 +48,7 @@ for demonstration purposes
 </head>
 
 <body>
-    <form action="/game/top" method="get" id="game-form">
+    <form id="game-form">
         <h2>First Rate Games</h2>
 
         <div id="fields">
@@ -61,14 +72,10 @@ for demonstration purposes
             </select>
         </div>
 
-
         <button>Get Games</button>
     </form>
 
-    <div id="responseJSON">
-        <h2>JSON Response</h2>
-        <pre id="response"></pre>
-    </div>
+    <div></div>
 
 </body>
 
