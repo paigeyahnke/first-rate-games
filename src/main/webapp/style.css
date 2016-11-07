@@ -63,3 +63,8 @@ pre {
     width: 10em;
     display: block;
 }
+
+#game {
+    margin: 1em;
+    color: white;
+}

@@ -1,5 +1,6 @@
 package edu.matc.firstrategames;
 
+import java.text.DecimalFormat;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;
@@ -144,6 +145,13 @@ public class Game {
                 ", genres=" + genres +
                 ", releaseYear=" + yearOfReleasee +
                 '}';
+    }
+
+    public String toHTML() {
+        DecimalFormat df = new DecimalFormat("0");
+
+        return "<div id='game'><h3 id='name'>" + name + "</h3>"
+                + "<h4 id='rating' style='text-align: center;'>Rating: " + df.format(rating) + "/100</h4></div>";
     }
 
 }

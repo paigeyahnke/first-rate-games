@@ -36,7 +36,7 @@
 **Paige**  
 - [X] Format year
 - [X] Add ability to choose json vs html (form)
-- [ ] Add HTML output
+- [X] Add HTML output
 - [X] Auto-fill genres
 
 **Bao**  

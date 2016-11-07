@@ -85,13 +85,17 @@ public class GameController {
             log.error("IGDB API Error", e);
         }
 
-        // object mapper to map response to Game class
         log.info("Mapping json object to Game object...");
+        // object mapper to map response to Game class
         ObjectMapper objectMapper = new ObjectMapper();
         Game[] game = objectMapper.readValue(gameResponse, Game[].class);
 
-        // return game json
-        return Response.status(200).entity(game).build();
+        if (responseType.equals("json")) {
+            // return game json
+            return Response.status(200).entity(game).build();
+        } else {
+            return Response.status(200).entity(game[0].toHTML()).build();
+        }
 
     }
 

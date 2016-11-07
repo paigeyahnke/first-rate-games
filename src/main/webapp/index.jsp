@@ -28,7 +28,7 @@ for demonstration purposes
             if (!responseDiv.length) {
                 responseDiv = $("<div>").attr("id", "responseJSON");
                 responseDiv.append($("<h2>").text("Response"));
-                responseDiv.append($("<pre>").attr("id", "response"));
+                responseDiv.append($("<div>").attr("id", "response"));
                 $("body").append(responseDiv);
                 $('#responseJSON').fadeIn();
             } else {
@@ -38,10 +38,21 @@ for demonstration purposes
             // loading symbol while waiting on response
             $('#response').append("<img src='spinner.gif' id='spinner'/>");
 
-            // display json response
-            $.get('/game/top', $('#game-form').serialize(), function (data) {
-                $('#response').text(JSON.stringify(data, null, 2));
-            }, 'json');
+            if ($("#responseType").val() == "json") {
+                // display json response
+                $.get('/game/top', $('#game-form').serialize(), function (data) {
+
+                    $('#response').html("<pre>" + JSON.stringify(data, null, 2) + "</pre>");
+
+                }, 'json');
+            } else {
+                // display json response
+                $.get('/game/top', $('#game-form').serialize(), function (data) {
+                    $('#response').html(data);
+                }, 'html');
+            }
+
+
         });
     })
 </script>
