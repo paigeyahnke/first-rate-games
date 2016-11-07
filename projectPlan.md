@@ -37,7 +37,7 @@
 - [ ] Format year
 - [ ] Add ability to choose json vs html (form)
 - [ ] Add HTML output
-- [ ] Auto-fill genres
+- [X] Auto-fill genres
 
 **Bao**  
 - [ ] Write unit tests  

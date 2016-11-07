@@ -64,13 +64,19 @@ for demonstration purposes
 
             <label for="genre">Genre</label>
             <select name="genre" id="genre">
-
                 <c:forEach var="genre" items="${genres}">
                     <option><c:out value="${genre}"/></option>
                 </c:forEach>
+            </select>
+            <br />
 
+            <label for="responseType">Display</label>
+            <select name="responseType" id="responseType">
+                <option value="json">JSON</option>
+                <option value="html">HTML</option>
             </select>
         </div>
+        <br />
 
         <button>Get Games</button>
     </form>

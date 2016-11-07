@@ -10,10 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.Enumeration;
-import java.util.Properties;
-import java.util.Set;
+import java.lang.reflect.Array;
+import java.util.*;
 
 /**
  * Created by paige on 11/6/16.
@@ -35,7 +33,10 @@ public class DemoController extends HttpServlet {
             genreProperties.load(resourceStream);
         }
 
-        Set<Object> genres = genreProperties.keySet();
+        TreeSet<String> genres = new TreeSet<>();
+        for (Object genre : genreProperties.keySet()) {
+            genres.add(genre.toString());
+        }
 
         request.setAttribute("genres", genres);
 
