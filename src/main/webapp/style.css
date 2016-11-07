@@ -43,8 +43,9 @@ button {
 
 #fields {
     text-align: left;
-    width: 8em;
+    width: 10em;
     margin: 1em auto;
+    background-color: grey;
 }
 
 pre {
