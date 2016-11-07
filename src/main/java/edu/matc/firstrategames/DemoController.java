@@ -20,31 +20,23 @@ import java.util.Set;
  */
 @WebServlet(
         name = "demo",
-        urlPatterns = { "", "/", "/demo" }
+        urlPatterns = { "", "/demo" }
 )
-public class IndexController extends HttpServlet {
+public class DemoController extends HttpServlet {
     private final Logger log = Logger.getLogger(this.getClass());
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         ClassLoader loader = Thread.currentThread().getContextClassLoader();
 
-        Properties properties = new Properties();
+        Properties genreProperties = new Properties();
         try (InputStream resourceStream = loader.getResourceAsStream("genres.properties")) {
             log.info("Loading genres properties...");
-            properties.load(resourceStream);
+            genreProperties.load(resourceStream);
         }
 
-        Enumeration<Object> genreProperties = properties.keys();
+        Set<Object> genres = genreProperties.keySet();
 
-        ArrayList<String> genres = new ArrayList<>();
-
-        while (genreProperties.hasMoreElements()) {
-            String key = (String) genreProperties.nextElement();
-            genres.add(key);
-        }
-
-        log.info(genres);
         request.setAttribute("genres", genres);
 
         RequestDispatcher dispatcher = request.getRequestDispatcher("/index.jsp");
