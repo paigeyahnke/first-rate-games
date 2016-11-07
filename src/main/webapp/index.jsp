@@ -1,3 +1,5 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <html>
 
 <head>
@@ -50,11 +52,12 @@ for demonstration purposes
             <br />
 
             <label for="genre">Genre</label>
-            <!-- Iterate through using every KEY that exists in the genres.properties file -->
             <select name="genre" id="genre">
-                <option value="shooter" selected="selected">Shooter</option>
-                <option value="rpg">RPG</option>
-                <option value="sports">Sports</option>
+
+                <c:forEach var="genre" items="${genres}">
+                    <option><c:out value="${genre}"/></option>
+                </c:forEach>
+
             </select>
         </div>
 

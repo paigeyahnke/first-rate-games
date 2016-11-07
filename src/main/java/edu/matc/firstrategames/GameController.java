@@ -40,6 +40,7 @@ public class GameController {
             log.info("Loading properties...");
             properties.load(resourceStream);
         }
+
         // load genres properties
         Properties genres = new Properties();
         try(InputStream resourceStream = loader.getResourceAsStream("genres.properties")) {
