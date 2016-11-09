@@ -22,41 +22,86 @@ import java.util.Properties;
 @Path("/top")
 public class GameController {
     private final Logger log = Logger.getLogger(this.getClass());
+    Properties properties;
+    Properties genres;
+    String genre;
+    Integer year;
+    String responseType;
+    String gameResponse;
 
-    // The Java method will process HTTP GET requests
+    /**
+     * The Java method will process HTTP GET requests and call other methods
+     * in order to complete this request
+     *
+     * @param genre
+     * @param year
+     * @param responseType
+     */
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getMessage(@QueryParam("genre") String genre,
-                               @QueryParam("year") Integer year,
-                               @QueryParam("responseType") String responseType) throws IOException {
+    public Response getMessage (@QueryParam("genre") String genre,
+            @QueryParam("year") Integer year,
+            @QueryParam("responseType") String responseType) throws IOException {
+
+        //allow for global access
+        this.genre = genre;
+        this.year = year;
+        this.responseType = responseType;
+
         log.info("Genre: " + genre + " | Year: " + year);
         log.info("Epoch Year Min: " + Utilities.firstOfYearEpoch(year));
         log.info("Epoch Year Max: " + Utilities.firstOfYearEpoch(year + 1));
 
+        //call other methods to complete request
+        loadProperties();
+        getResponseFromIgdb();
+
+        log.info("Mapping json object to Game object...");
+
+        // object mapper to map response to Game class
+        ObjectMapper objectMapper = new ObjectMapper();
+        Game[] game = objectMapper.readValue(gameResponse, Game[].class);
+
+        // return game json
+        return Response.status(200).entity(game).build();
+
+    }
+
+
+    /**
+     * This method loads the values from the properties file
+     *
+     */
+    public void loadProperties() throws IOException {
         // load properties
         ClassLoader loader = Thread.currentThread().getContextClassLoader();
-        Properties properties = new Properties();
-        try(InputStream resourceStream = loader.getResourceAsStream("properties.properties")) {
+        properties = new Properties();
+        try (InputStream resourceStream = loader.getResourceAsStream("properties.properties")) {
             log.info("Loading properties...");
             properties.load(resourceStream);
         }
         // load genres properties
-        Properties genres = new Properties();
-        try(InputStream resourceStream = loader.getResourceAsStream("genres.properties")) {
+        genres = new Properties();
+        try (InputStream resourceStream = loader.getResourceAsStream("genres.properties")) {
             log.info("Loading genres properties...");
             genres.load(resourceStream);
         }
 
-        // initialize properties
-        String url     = properties.getProperty("igdbURL");
-        String fields  = properties.getProperty("igdbFields");
-        String limit   = properties.getProperty("igdbLimit");
-        String orderBy = properties.getProperty("igdbOrderBy");
-        String key     = properties.getProperty("igdbXMashapeKey");
-        String accept  = properties.getProperty("igdbAccept");
+    }
 
-        // response from igdb
-        String gameResponse = "";
+
+    /**
+     * This method will get the response from igdb
+     *
+     */
+    public void getResponseFromIgdb() {
+        // initialize properties
+        String url = properties.getProperty("igdbURL");
+        String fields = properties.getProperty("igdbFields");
+        String limit = properties.getProperty("igdbLimit");
+        String orderBy = properties.getProperty("igdbOrderBy");
+        String key = properties.getProperty("igdbXMashapeKey");
+        String accept = properties.getProperty("igdbAccept");
 
         // get the response from igdb
         try {
@@ -80,16 +125,9 @@ public class GameController {
         } catch (UnirestException e) {
             log.error("IGDB API Error", e);
         }
-
-        // object mapper to map response to Game class
-        log.info("Mapping json object to Game object...");
-        ObjectMapper objectMapper = new ObjectMapper();
-        Game[] game = objectMapper.readValue(gameResponse, Game[].class);
-
-        // return game json
-        return Response.status(200).entity(game).build();
-
     }
+
+
 
 }
 
