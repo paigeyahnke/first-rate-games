@@ -33,7 +33,7 @@ public class Game {
     @JsonProperty("genres")
     private List<Integer> genres = new ArrayList<Integer>();
     @JsonProperty("first_release_date")
-    private int yearOfReleasee;
+    private int releaseYear;
 
     /**
      *
@@ -118,22 +118,22 @@ public class Game {
     /**
      *
      * @return
-     * The yearOfReleasee
+     * The releaseYear
      */
     @JsonProperty("first_release_date")
-    public int getYearOfReleasee() {
-        return yearOfReleasee;
+    public int getReleaseYear() {
+        return releaseYear;
     }
 
     /**
      *
-     * @param yearOfReleasee
+     * @param releaseYear
      * The first_release_date
      */
     @JsonProperty("first_release_date")
-    public void setYearOfReleasee(long yearOfReleasee) {
-        LocalDate releaseDate = Instant.ofEpochMilli(yearOfReleasee).atZone(ZoneId.systemDefault()).toLocalDate();
-        this.yearOfReleasee = releaseDate.getYear();
+    public void setReleaseYear(long releaseYear) {
+        LocalDate releaseDate = Instant.ofEpochMilli(releaseYear).atZone(ZoneId.systemDefault()).toLocalDate();
+        this.releaseYear = releaseDate.getYear();
     }
 
     @Override
@@ -143,7 +143,7 @@ public class Game {
                 ", name='" + name + '\'' +
                 ", rating=" + rating +
                 ", genres=" + genres +
-                ", releaseYear=" + yearOfReleasee +
+                ", releaseYear=" + releaseYear +
                 '}';
     }
 
@@ -151,7 +151,8 @@ public class Game {
         DecimalFormat df = new DecimalFormat("0");
 
         return "<div id='game'><h3 id='name'>" + name + "</h3>"
-                + "<h4 id='rating' style='text-align: center;'>Rating: " + df.format(rating) + "/100</h4></div>";
+                + "<h4 id='rating' style='text-align: center;'>Rating: "
+                + df.format(rating) + "/100</h4></div>";
     }
 
 }

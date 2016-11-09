@@ -16,17 +16,14 @@ public class GameControllerTest {
 
     @Test
     public void testGetResponseFromIgdb() throws IOException {
-        logger.info("In method.");
-
-        String response = "";
+        logger.info("Testing IDGB response.");
 
         GameController testGame = new GameController();
         testGame.getMessage("Adventure", 2015, "json");
 
-        response = (String)testGame.mapGameResponse().getName();
+        String response = testGame.mapGameResponse().getName();
 
         assertEquals("The Witcher 3: Wild Hunt", response);
-
     }
 
 }
