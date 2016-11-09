@@ -3,15 +3,10 @@ package edu.matc.firstrategames;
 import org.apache.log4j.Logger;
 import org.junit.Test;
 
-import javax.ws.rs.Produces;
-import javax.xml.ws.Response;
 import java.io.IOException;
-import java.util.ArrayList;
 
 import static org.junit.Assert.*;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import javax.ws.rs.client.*;
 
 /**
  * Created by bvue0 on 11/6/2016.
