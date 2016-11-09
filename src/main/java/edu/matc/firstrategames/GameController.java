@@ -31,6 +31,7 @@ public class GameController {
     Integer year;
     String responseType;
     String gameResponse;
+    Game[] game;
 
     /**
      * The Java method will process HTTP GET requests and call other methods
@@ -58,11 +59,8 @@ public class GameController {
         //call other methods to complete request
         loadProperties();
         getResponseFromIgdb();
+        mapGameResponse();
 
-        log.info("Mapping json object to Game object...");
-        // object mapper to map response to Game class
-        ObjectMapper objectMapper = new ObjectMapper();
-        Game[] game = objectMapper.readValue(gameResponse, Game[].class);
 
         if (responseType.equals("json")) {
             // return game json
@@ -70,8 +68,6 @@ public class GameController {
         } else {
             return Response.status(200).entity(game[0].toHTML()).build();
         }
-
-
 
     }
 
@@ -136,6 +132,18 @@ public class GameController {
         }
     }
 
+
+    /**
+     * This method will map the JSON response to a java object
+     *
+     */
+    public Game mapGameResponse() throws IOException {
+        log.info("Mapping json object to Game object...");
+        // object mapper to map response to Game class
+        ObjectMapper objectMapper = new ObjectMapper();
+        game = objectMapper.readValue(gameResponse, Game[].class);
+        return game[0];
+    }
 
 
 }

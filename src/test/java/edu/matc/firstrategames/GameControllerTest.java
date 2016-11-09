@@ -3,7 +3,7 @@ package edu.matc.firstrategames;
 import org.apache.log4j.Logger;
 import org.junit.Test;
 
-import javax.ws.rs.core.MediaType;
+import javax.ws.rs.Produces;
 import javax.xml.ws.Response;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -24,21 +24,13 @@ public class GameControllerTest {
         logger.info("In method.");
 
         String response = "";
-/**
+
         GameController testGame = new GameController();
-        testGame.getMessage("rpg", 2015, "application/json");
+        testGame.getMessage("Adventure", 2015, "json");
 
-        Game nameOfGame = new Game();
-        response = nameOfGame.getName();
+        response = (String)testGame.mapGameResponse().getName();
 
-        logger.info("test response: " + response);
-
-
-
-
-
-        assertEquals();
-*/
+        assertEquals("The Witcher 3: Wild Hunt", response);
 
     }
 
