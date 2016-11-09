@@ -24,7 +24,7 @@ public class GameControllerTest {
         logger.info("In method.");
 
         String response = "";
-
+/**
         GameController testGame = new GameController();
         testGame.getMessage("rpg", 2015, "application/json");
 
@@ -35,7 +35,7 @@ public class GameControllerTest {
 
 
 
-/**
+
 
         assertEquals();
 */

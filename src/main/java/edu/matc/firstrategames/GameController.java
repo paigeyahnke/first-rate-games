@@ -13,6 +13,9 @@ import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.io.*;
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.Properties;
 
 
@@ -57,13 +60,18 @@ public class GameController {
         getResponseFromIgdb();
 
         log.info("Mapping json object to Game object...");
-
         // object mapper to map response to Game class
         ObjectMapper objectMapper = new ObjectMapper();
         Game[] game = objectMapper.readValue(gameResponse, Game[].class);
 
-        // return game json
-        return Response.status(200).entity(game).build();
+        if (responseType.equals("json")) {
+            // return game json
+            return Response.status(200).entity(game).build();
+        } else {
+            return Response.status(200).entity(game[0].toHTML()).build();
+        }
+
+
 
     }
 
@@ -80,6 +88,7 @@ public class GameController {
             log.info("Loading properties...");
             properties.load(resourceStream);
         }
+
         // load genres properties
         genres = new Properties();
         try (InputStream resourceStream = loader.getResourceAsStream("genres.properties")) {

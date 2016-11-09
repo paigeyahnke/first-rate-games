@@ -1,5 +1,9 @@
 package edu.matc.firstrategames;
 
+import java.text.DecimalFormat;
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.Generated;
@@ -29,7 +33,7 @@ public class Game {
     @JsonProperty("genres")
     private List<Integer> genres = new ArrayList<Integer>();
     @JsonProperty("first_release_date")
-    private long firstReleaseDate;
+    private int yearOfReleasee;
 
     /**
      *
@@ -114,21 +118,22 @@ public class Game {
     /**
      *
      * @return
-     * The firstReleaseDate
+     * The yearOfReleasee
      */
     @JsonProperty("first_release_date")
-    public long getFirstReleaseDate() {
-        return firstReleaseDate;
+    public int getYearOfReleasee() {
+        return yearOfReleasee;
     }
 
     /**
      *
-     * @param firstReleaseDate
+     * @param yearOfReleasee
      * The first_release_date
      */
     @JsonProperty("first_release_date")
-    public void setFirstReleaseDate(long firstReleaseDate) {
-        this.firstReleaseDate = firstReleaseDate;
+    public void setYearOfReleasee(long yearOfReleasee) {
+        LocalDate releaseDate = Instant.ofEpochMilli(yearOfReleasee).atZone(ZoneId.systemDefault()).toLocalDate();
+        this.yearOfReleasee = releaseDate.getYear();
     }
 
     @Override
@@ -138,8 +143,15 @@ public class Game {
                 ", name='" + name + '\'' +
                 ", rating=" + rating +
                 ", genres=" + genres +
-                ", firstReleaseDate=" + firstReleaseDate +
+                ", releaseYear=" + yearOfReleasee +
                 '}';
+    }
+
+    public String toHTML() {
+        DecimalFormat df = new DecimalFormat("0");
+
+        return "<div id='game'><h3 id='name'>" + name + "</h3>"
+                + "<h4 id='rating' style='text-align: center;'>Rating: " + df.format(rating) + "/100</h4></div>";
     }
 
 }

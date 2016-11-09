@@ -6,38 +6,42 @@ body {
 }
 
 form, #responseJSON {
-    padding: 1em;
-    width: 16em;
+    padding: 1.5em;
     display: inline-block;
     margin: 1em;
     border-radius: 1.5em;
     background-color: #404040;
+    text-align: center;
 }
 
 #responseJSON {
-    width: 20.5em;
-    display: none;
+    text-align: left;
+    padding: 1em;
     margin: 1em auto;
 }
 
 h2 {
+    text-align: center;
     margin: .5em 0 1em 0;
 }
 
 label {
-    width: 3em;
+    width: 4em;
     display: inline-block;
     margin-top: .25em;
 }
 
 input {
-    width: 5.75em;
+    width: 90px;
     border-radius: .25em;
     padding-left: .5em;
 }
 
+select {
+    width: 90px;
+}
+
 button {
-    font: 1.2em;
     font-weight: bold;
     color: #404040;
     margin: 1em 0 .5em 0;
@@ -45,8 +49,7 @@ button {
 
 #fields {
     text-align: left;
-    width: 8em;
-    margin: 1em auto;
+    display: inline-block;
 }
 
 pre {
@@ -54,4 +57,14 @@ pre {
     width: 100%;
     text-align: left;
     padding: 0 1em 1em 1em;
+}
+
+#spinner {
+    width: 10em;
+    display: block;
+}
+
+#game {
+    margin: 1em;
+    color: white;
 }

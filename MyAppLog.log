@@ -9373,3 +9373,29 @@ Accept: application/json | Key: JtIfKzpDYlmshIqjqfbPp0v9uOngp1Vi6W8jsnOgwGGBqCad
 Response: [{"id":1942,"name":"The Witcher 3: Wild Hunt","rating":97.3935953196424,"genres":[12,31],"first_release_date":1431993600000}]
 Mapping json object to Game object...
 test response: null
+In method.
+Genre: rpg | Year: 2015
+Epoch Year Min: 1420070400000
+Epoch Year Max: 1451606400000
+Loading properties...
+Loading genres properties...
+Getting response from igdb.com...
+Sending Url: https://igdbcom-internet-game-database-v1.p.mashape.com/games/
+Accept: application/json | Key: JtIfKzpDYlmshIqjqfbPp0v9uOngp1Vi6W8jsnOgwGGBqCadVb
+Response: [{"error":["Bad error! We have been informed!"]}]
+Mapping json object to Game object...
+In method.
+Genre: rpg | Year: 2015
+Epoch Year Min: 1420070400000
+Epoch Year Max: 1451606400000
+Loading properties...
+Loading genres properties...
+Getting response from igdb.com...
+Sending Url: https://igdbcom-internet-game-database-v1.p.mashape.com/games/
+Accept: application/json | Key: JtIfKzpDYlmshIqjqfbPp0v9uOngp1Vi6W8jsnOgwGGBqCadVb
+Response: [{"error":["Bad error! We have been informed!"]}]
+Mapping json object to Game object...
+In method.
+In method.
+In the Epoch Test Method.
+Epoch Test Complete.

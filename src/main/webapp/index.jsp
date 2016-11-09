@@ -1,10 +1,12 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <html>
 
 <head>
     <title>First Rate Games</title>
     <link rel="stylesheet"
           type="text/css"
-          href="style.css" />
+          href="${pageContext.request.contextPath}/style.css" />
     <script src="https://code.jquery.com/jquery-2.2.4.min.js"
             integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
             crossorigin="anonymous"></script>
@@ -21,21 +23,43 @@ for demonstration purposes
             // stops form from taking the user to a new page
             e.preventDefault();
 
-            // placeholder text while waiting on response
-            $('#responseJSON').fadeIn();
-            $('#response').text('loading...')
+            var responseDiv = $("#responseJSON");
 
-            // display json response
-            $.get('/game/top', $('#game-form').serialize(), function (data) {
-                $('#response').text(JSON.stringify(data, null, 2));
-            }, 'json');
+            if (!responseDiv.length) {
+                responseDiv = $("<div>").attr("id", "responseJSON");
+                responseDiv.append($("<h2>").text("Response"));
+                responseDiv.append($("<div>").attr("id", "response"));
+                $("body").append(responseDiv);
+                $('#responseJSON').fadeIn();
+            } else {
+                $('#response').text("");
+            }
+
+            // loading symbol while waiting on response
+            $('#response').append("<img src='spinner.gif' id='spinner'/>");
+
+            if ($("#responseType").val() == "json") {
+                // display json response
+                $.get('/game/top', $('#game-form').serialize(), function (data) {
+
+                    $('#response').html("<pre>" + JSON.stringify(data, null, 2) + "</pre>");
+
+                }, 'json');
+            } else {
+                // display json response
+                $.get('/game/top', $('#game-form').serialize(), function (data) {
+                    $('#response').html(data);
+                }, 'html');
+            }
+
+
         });
     })
 </script>
 </head>
 
 <body>
-    <form action="/game/top" method="get" id="game-form">
+    <form id="game-form">
         <h2>First Rate Games</h2>
 
         <div id="fields">
@@ -50,22 +74,25 @@ for demonstration purposes
             <br />
 
             <label for="genre">Genre</label>
-            <!-- Iterate through using every KEY that exists in the genres.properties file -->
             <select name="genre" id="genre">
-                <option value="shooter" selected="selected">Shooter</option>
-                <option value="rpg">RPG</option>
-                <option value="sports">Sports</option>
+                <c:forEach var="genre" items="${genres}">
+                    <option><c:out value="${genre}"/></option>
+                </c:forEach>
+            </select>
+            <br />
+
+            <label for="responseType">Display</label>
+            <select name="responseType" id="responseType">
+                <option value="json">JSON</option>
+                <option value="html">HTML</option>
             </select>
         </div>
-
+        <br />
 
         <button>Get Games</button>
     </form>
 
-    <div id="responseJSON">
-        <h2>JSON Response</h2>
-        <pre id="response"></pre>
-    </div>
+    <div></div>
 
 </body>
 
