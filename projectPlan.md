@@ -40,26 +40,29 @@
 - [X] Auto-fill genres
 
 **Bao**  
-- [ ] Write unit tests  
-- [ ] Break code into testable sections
+- [X] Write unit tests  
+- [X] Break code into testable sections
 
 **Bo**  
 - [X] Move hard coded data to properties files
 - [X] Update game controller to have param for response type
 - [X] Create genres.properties files to retrieve genre IDs using genre strings
-- [ ] Change to return random best game
 
 **All**  
 - [ ] Deploy to digital ocean  
 
 ### Week 5: Nov 9 - Nov 16  
+**Paige**  
 - [ ] Write documentation  
-- [ ] Prepare for presentation  
-  * Explain the problem you are solving with your service/api  
-  * Show the user documentation  
-  * Demonstrate the service/api  
-  * Explain/walk through the code, including unit tests  
-  * Discuss challenges and key learning points  
+
+**Bao**  
+- [ ] Slideshow
+- [ ] Add more unit tests?
+
+**Bo**  
+- [ ] Change to return random best game
+- [ ] Dynamic return type
+
 
 
 

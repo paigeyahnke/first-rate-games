@@ -132,7 +132,6 @@ public class GameController {
         }
     }
 
-
     /**
      * This method will map the JSON response to a java object
      *
