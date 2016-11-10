@@ -49,7 +49,7 @@
 - [X] Create genres.properties files to retrieve genre IDs using genre strings
 
 **All**  
-- [ ] Deploy to digital ocean  
+- [X] Deploy to digital ocean  
 
 ### Week 5: Nov 9 - Nov 16  
 **Paige**  
