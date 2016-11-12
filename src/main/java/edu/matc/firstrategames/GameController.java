@@ -31,7 +31,7 @@ public class GameController {
     Integer year;
     String responseType;
     String gameResponse;
-    Game[] game;
+    Game[] games;
 
     /**
      * The Java method will process HTTP GET requests and call other methods
@@ -64,9 +64,9 @@ public class GameController {
 
         if (responseType.equals("json")) {
             // return game json
-            return Response.status(200).entity(game).build();
+            return Response.status(200).entity(games[Utilities.getRandomNumber()]).build();
         } else {
-            return Response.status(200).entity(game[0].toHTML()).build();
+            return Response.status(200).entity(games[Utilities.getRandomNumber()].toHTML()).build();
         }
 
     }
@@ -140,8 +140,8 @@ public class GameController {
         log.info("Mapping json object to Game object...");
         // object mapper to map response to Game class
         ObjectMapper objectMapper = new ObjectMapper();
-        game = objectMapper.readValue(gameResponse, Game[].class);
-        return game[0];
+        games = objectMapper.readValue(gameResponse, Game[].class);
+        return games[0];
     }
 
 

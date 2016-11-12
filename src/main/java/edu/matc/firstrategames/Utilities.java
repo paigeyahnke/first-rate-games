@@ -3,6 +3,7 @@ package edu.matc.firstrategames;
 import java.time.LocalDate;
 import java.time.Month;
 import java.time.ZoneId;
+import java.util.Random;
 
 /**
  * Created by Bo on 10/31/2016.
@@ -19,6 +20,13 @@ public class Utilities {
         return LocalDate.of(year, Month.JANUARY, 1)
                 .atStartOfDay(ZoneId.of("Z"))
                 .toEpochSecond() * 1000;
+    }
+
+    public static int getRandomNumber() {
+
+        Random r = new Random();
+        return r.nextInt(10);
+
     }
 
 }
