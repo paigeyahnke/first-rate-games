@@ -11,7 +11,7 @@
 |-----|----|---------------|
 |genre|String|Name of the genre|
 |year|Integer|Year of release|
-|returnType|String|HTML or JSON response type|
+|responseType|String|HTML or JSON response type|
 
 ###Success 200
 |Field|Type|Description|
