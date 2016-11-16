@@ -8,9 +8,7 @@ import java.io.InputStream;
 import java.time.LocalDate;
 import java.time.Month;
 import java.time.ZoneId;
-import java.util.Properties;
-import java.util.Random;
-import java.util.TreeMap;
+import java.util.*;
 
 /**
  * This is the utilities class that will hold general methods.
@@ -41,6 +39,18 @@ public class Utilities {
         Random r = new Random();
         return r.nextInt(10);
 
+    }
+
+    public static TreeMap<Integer, String> getGenres() {
+        Properties genreProperties = loadProperties("genres.properties");
+
+        TreeMap<Integer, String> genres = new TreeMap<>();
+
+        for(Map.Entry<Object, Object> pair : genreProperties.entrySet()) {
+            genres.put(Integer.parseInt((String)pair.getValue()), (String) pair.getKey());
+        }
+
+        return genres;
     }
 
     public static Properties loadProperties(String propertiesPath) {

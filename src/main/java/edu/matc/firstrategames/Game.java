@@ -6,6 +6,7 @@ import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.TreeMap;
 import javax.annotation.Generated;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -34,7 +35,7 @@ public class Game {
     @JsonProperty("rating")
     private Double rating;
     @JsonProperty("genres")
-    private List<Integer> genres = new ArrayList<Integer>();
+    private List<String> genres = new ArrayList<String>();
     @JsonProperty("first_release_date")
     private int releaseYear;
 
@@ -104,18 +105,28 @@ public class Game {
      * The genres
      */
     @JsonProperty("genres")
-    public List<Integer> getGenres() {
+    public List<String> getGenres() {
         return genres;
     }
 
     /**
-     *
+     * Accepts the list of integers representing genres and stores their associated names.
      * @param genres
      * The genres
      */
     @JsonProperty("genres")
     public void setGenres(List<Integer> genres) {
-        this.genres = genres;
+        TreeMap<Integer, String> allGenres = Utilities.getGenres();
+
+        List<String> currentGenres = new ArrayList<>();
+        for (Integer genreId : genres) {
+            String genre = allGenres.get(genreId);
+            if (genre != null) {
+                currentGenres.add(genre);
+            }
+        }
+
+        this.genres = currentGenres;
     }
 
     /**
@@ -176,7 +187,7 @@ public class Game {
         html += "<h4 id='gameGenres'>Genres: </h4>"
                 + "<ul id='gameGenreList'>";
 
-        for (int genre : genres) {
+        for (String genre : genres) {
             html += "<li>" + genre + "</li>";
         }
         html += "</ul>";

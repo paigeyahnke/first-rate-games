@@ -34,16 +34,11 @@ public class DemoController extends HttpServlet {
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        ClassLoader loader = Thread.currentThread().getContextClassLoader();
 
-        Properties genreProperties = Utilities.loadProperties("genres.properties");
+        List<String> keys = new ArrayList<>(Utilities.getGenres().values());
+        Collections.sort(keys);
 
-        TreeSet<String> genres = new TreeSet<>();
-        for (Object genre : genreProperties.keySet()) {
-            genres.add(genre.toString());
-        }
-
-        request.setAttribute("genres", genres);
+        request.setAttribute("genres", keys);
 
         RequestDispatcher dispatcher = request.getRequestDispatcher("/index.jsp");
         dispatcher.forward(request, response);
