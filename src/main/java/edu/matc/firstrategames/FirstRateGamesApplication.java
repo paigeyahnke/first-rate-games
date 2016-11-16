@@ -5,12 +5,10 @@ import javax.ws.rs.core.Application;
 import java.util.HashSet;
 import java.util.Set;
 
-//Defines the base URI for all resource URIs.
-@ApplicationPath("game")
-
 /**
- * The java class declares root resource and provider classes
+ * The java class declares root resource and provider classes and defines the base URI for all resource URIs
  */
+@ApplicationPath("game")
 public class FirstRateGamesApplication extends Application {
 
 

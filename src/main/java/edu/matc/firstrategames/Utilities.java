@@ -41,6 +41,12 @@ public class Utilities {
 
     }
 
+
+    /**
+     * This will load the genre property from one of the properties files
+     *
+     * @return the video game genres
+     */
     public static TreeMap<Integer, String> getGenres() {
         Properties genreProperties = loadProperties("genres.properties");
 
@@ -53,6 +59,13 @@ public class Utilities {
         return genres;
     }
 
+
+    /**
+     * This method will load the values from the properties files
+     *
+     * @param propertiesPath the path for the properties file
+     * @return the properties values
+     */
     public static Properties loadProperties(String propertiesPath) {
         ClassLoader loader = Thread.currentThread().getContextClassLoader();
         Properties properties = new Properties();

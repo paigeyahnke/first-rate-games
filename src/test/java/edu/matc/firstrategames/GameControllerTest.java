@@ -9,8 +9,13 @@ import static org.junit.Assert.*;
 
 
 /**
- * Created by bvue0 on 11/6/2016.
+ *
+ * This is the test for the Game Controller class. It will verify that the IGDB API is returning a value
+ *
+ * Created on 11/6/2016.
+ * @author Bao
  */
+
 public class GameControllerTest {
     private final Logger logger = Logger.getLogger(this.getClass());
 

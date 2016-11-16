@@ -6,8 +6,13 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 /**
- * Created by bvue0 on 11/6/2016.
+ *
+ * This is the test for the Epoch method in the Utilities class. It will verify that the year conversion is accurate
+ *
+ * Created on 11/6/2016.
+ * @author Bao
  */
+
 public class UtilitiesTest {
     private final Logger logger = Logger.getLogger(this.getClass());
 
