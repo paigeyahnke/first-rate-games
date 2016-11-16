@@ -22,7 +22,7 @@
 |genres|Integer[]|What genres the game is|
 |first_release_date|Integer|Year game was first released|
 
-###Success 500
+###Server Error 500
 |Field|Type|Description|
 |-----|----|---------------|
 |id|Int|API id|
