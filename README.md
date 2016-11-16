@@ -16,13 +16,15 @@ year, a video game genre, and the data format they would prefer. This service us
 information. IGDB will return more information than we need so we will filter that information out and only return 
 one of the top rated games for the year the user has entered. 
 
-##[Presentation](First-Rate-Games.pptx)
+##[Live Demo](http://138.68.57.130:8080/first-rate-games/)
 
 ## [Project Plan/ Weekly Journal](projectPlan.md)
 
 ## [Documentation](documentation.md)
 
-### Team Awesomeness (name subject to change)
+##[Presentation](First-Rate-Games.pptx)
+
+### Team Awesomeness
 - Bao Vue  
 - Bo Broadway  
 - Paige Yahnke  
