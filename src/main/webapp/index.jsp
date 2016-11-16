@@ -45,8 +45,7 @@ for demonstration purposes
                 }, 'json');
             } else {
                 // display json response
-                $.get('/game/top', $('#game-form').serialize(), function (data) {
-                    alert(data);
+                $.get('game/top', $('#game-form').serialize(), function (data) {
                     $('#response').html(data);
                 }, 'html');
             }
@@ -87,7 +86,7 @@ for demonstration purposes
         </div>
         <br />
 
-        <button>Get Games</button>
+        <button>Get Game</button>
     </form>
 
     <div></div>

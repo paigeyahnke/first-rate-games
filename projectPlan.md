@@ -53,7 +53,7 @@
 
 ### Week 5: Nov 9 - Nov 16  
 **Paige**  
-- [ ] Write documentation  
+- [X] Write documentation  
 
 **Bao**  
 - [ ] Slideshow

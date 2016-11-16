@@ -148,14 +148,25 @@ public class Game {
     }
 
     public String toHTML() {
-        DecimalFormat df = new DecimalFormat("0");
-
-        String html = "<div id='game'><h3 id='name'>Name: " + name + "</h3>";
+        String html = "<div class='firstRateGame' id='" + id + "'>"
+                + "<h4 id='gameName'>Name: " + name + "</h4>";
 
         if (rating != null) {
-            html += "<h4 id='rating' style='text-align: center;'>Rating: " +
+            DecimalFormat df = new DecimalFormat("0");
+
+            html += "<h4 id='gameRating'>Rating: " +
                     df.format(rating) + "/100</h4>";
         }
+
+        html += "<h4 id='gameGenres'>Genres: </h4>"
+                + "<ul id='gameGenreList'>";
+
+        for (int genre : genres) {
+            html += "<li>" + genre + "</li>";
+        }
+        html += "</ul>";
+
+        html += "<h4 id='gameReleaseYear'>Year: " + releaseYear + "</h4>";
 
         html += "</div>";
 

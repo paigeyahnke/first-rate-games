@@ -13,9 +13,6 @@ import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.io.*;
-import java.time.Instant;
-import java.time.LocalDate;
-import java.time.ZoneId;
 import java.util.Properties;
 
 
@@ -30,8 +27,6 @@ public class GameController {
     String genre;
     Integer year;
     String responseType;
-    String gameResponse;
-    Game[] games;
 
     /**
      * The Java method will process HTTP GET requests and call other methods
@@ -44,8 +39,8 @@ public class GameController {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Response getMessage (@QueryParam("genre") String genre,
-            @QueryParam("year") Integer year,
-            @QueryParam("responseType") String responseType) throws IOException {
+                                @QueryParam("year") Integer year,
+                                @QueryParam("responseType") String responseType) throws IOException {
 
         //allow for global access
         this.genre = genre;
@@ -58,15 +53,19 @@ public class GameController {
 
         //call other methods to complete request
         loadProperties();
-        getResponseFromIgdb();
-        mapGameResponse();
+        String response = getResponseFromIgdb();
 
+        if (response != null) {
+            Game[] games = mapGameResponse(response);
 
-        if (responseType.equals("json")) {
-            // return game json
-            return Response.status(200).entity(games[Utilities.getRandomNumber()]).build();
+            if (responseType.equals("json")) {
+                // return game json
+                return Response.status(200).entity(games[Utilities.getRandomNumber()]).build();
+            } else {
+                return Response.status(200).entity(games[Utilities.getRandomNumber()].toHTML()).build();
+            }
         } else {
-            return Response.status(200).entity(games[Utilities.getRandomNumber()].toHTML()).build();
+            return Response.status(500).entity("{'error' : 'Server error. Could not complete request.'}").build();
         }
 
     }
@@ -98,7 +97,7 @@ public class GameController {
      * This method will get the response from igdb
      *
      */
-    public void getResponseFromIgdb() {
+    public String getResponseFromIgdb() {
         // initialize properties
         String url = properties.getProperty("igdbURL");
         String fields = properties.getProperty("igdbFields");
@@ -124,10 +123,12 @@ public class GameController {
                     .header("X-Mashape-Key", key)
                     .header("Accept", accept)
                     .asString();
-            gameResponse = response.getBody();
+            String gameResponse = response.getBody();
             log.info("Response: " + gameResponse);
+            return gameResponse;
         } catch (UnirestException e) {
             log.error("IGDB API Error", e);
+            return null;
         }
     }
 
@@ -135,12 +136,11 @@ public class GameController {
      * This method will map the JSON response to a java object
      *
      */
-    public Game mapGameResponse() throws IOException {
+    public Game[] mapGameResponse(String gameResponse) throws IOException {
         log.info("Mapping json object to Game object...");
         // object mapper to map response to Game class
         ObjectMapper objectMapper = new ObjectMapper();
-        games = objectMapper.readValue(gameResponse, Game[].class);
-        return games[0];
+        return objectMapper.readValue(gameResponse, Game[].class);
     }
 
 

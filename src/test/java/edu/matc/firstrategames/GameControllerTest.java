@@ -21,9 +21,10 @@ public class GameControllerTest {
         GameController testGame = new GameController();
         testGame.getMessage("Adventure", 2015, "json");
 
-        String response = testGame.mapGameResponse().getName();
 
-        assertEquals("The Witcher 3: Wild Hunt", response);
+        Game game = testGame.mapGameResponse(testGame.getResponseFromIgdb())[0];
+
+        assertNotNull("No response", game);
     }
 
 }

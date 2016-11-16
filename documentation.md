@@ -18,20 +18,64 @@
 |-----|----|---------------|
 |id|Int|API id|
 |name|String|Name of the game|
+|rating|Double|Rating based on critics & users (if available)|
+|genres|Integer[]|What genres the game is|
+|first_release_date|Integer|Year game was first released|
+
+###Success 500
+|Field|Type|Description|
+|-----|----|---------------|
+|id|Int|API id|
+|name|String|Name of the game|
+|rating|Double|Rating based on critics & users (if available)|
 |genres|Integer[]|What genres the game is|
 |first_release_date|Integer|Year game was first released|
 
 
 ###Example JSON Response
 ```json
-{  
-  "id": 15909,  
-  "name": "The Bug Butcher",  
-  "genres": [  
-    33,  
-    32  
-  ],  
-  "first_release_date": 2016  
+HTTP/1.1 200 Success
+
+{
+  "id": 4756,
+  "name": "Child of Light",
+  "rating": 88.68588498563096,
+  "genres": [
+    8,
+    12,
+    16
+  ],
+  "first_release_date": 2014
 }
 ```  
+
+###Example JSON Response
+```json
+HTTP/1.1 500 Server Error
+
+{
+  "error" : "Server error. Could not complete request"
+}
+```  
+
+###Example HTML Response
+```html
+<div class='firstRateGame' id='12517'>
+  <h4 id='gameName'>Name: Undertale</h4>
+  <h4 id='gameRating'>Rating: 92/100</h4>
+  <h4 id='gameGenres'>Genres: </h4>
+  <ul id='gameGenreList'>
+    <li>12</li>
+    <li>31</li>
+    <li>32</li>
+    <li>16</li>
+  </ul>
+  <h4 id='gameReleaseYear'>Year: 2015</h4>
+</div>
+```
+
+
+
+
+
 
