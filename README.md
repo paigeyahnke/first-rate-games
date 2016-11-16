@@ -16,14 +16,11 @@ year, a video game genre, and the data format they would prefer. This service us
 information. IGDB will return more information than we need so we will filter that information out and only return 
 one of the top rated games for the year the user has entered. 
 
-
-## Project Design
-
 ##[Presentation](First-Rate-Games.pptx)
 
-## Supporting Technologies
-
 ## [Project Plan/ Weekly Journal](projectPlan.md)
+
+## [Documentation](documentation.md)
 
 ### Team Awesomeness (name subject to change)
 - Bao Vue  

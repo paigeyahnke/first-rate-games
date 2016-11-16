@@ -40,18 +40,16 @@ for demonstration purposes
 
             if ($("#responseType").val() == "json") {
                 // display json response
-                $.get('/game/top', $('#game-form').serialize(), function (data) {
-
+                $.get('game/top', $('#game-form').serialize(), function (data) {
                     $('#response').html("<pre>" + JSON.stringify(data, null, 2) + "</pre>");
-
                 }, 'json');
             } else {
                 // display json response
                 $.get('/game/top', $('#game-form').serialize(), function (data) {
+                    alert(data);
                     $('#response').html(data);
                 }, 'html');
             }
-
 
         });
     })

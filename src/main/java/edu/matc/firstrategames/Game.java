@@ -150,9 +150,17 @@ public class Game {
     public String toHTML() {
         DecimalFormat df = new DecimalFormat("0");
 
-        return "<div id='game'><h3 id='name'>" + name + "</h3>"
-                + "<h4 id='rating' style='text-align: center;'>Rating: "
-                + df.format(rating) + "/100</h4></div>";
+        String html = "<div id='game'><h3 id='name'>Name: " + name + "</h3>";
+
+        if (rating != null) {
+            html += "<h4 id='rating' style='text-align: center;'>Rating: " +
+                    df.format(rating) + "/100</h4>";
+        }
+
+        html += "</div>";
+
+        return html;
+
     }
 
 }

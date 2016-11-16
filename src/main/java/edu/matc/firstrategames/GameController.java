@@ -71,7 +71,6 @@ public class GameController {
 
     }
 
-
     /**
      * This method loads the values from the properties file
      *
