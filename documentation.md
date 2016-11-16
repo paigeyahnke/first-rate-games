@@ -65,6 +65,20 @@ HTTP/1.1 500 Server Error
 </div>
 ```
 
+###Available Genres
+- Arcade
+- Adventure
+- Action
+- Strategy
+- Sports
+- RPG
+- RTS
+- Racing
+- Puzzler
+- Platformer
+- Shooter
+- Fighting
+
 
 
 
