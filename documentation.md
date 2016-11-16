@@ -1,9 +1,12 @@
 # Documentation
 
-## GET /game/top:year:genre:responseType
+## GET 
+#### /game/top:year:genre:responseType
+####Example URL: 
 `http://138.68.57.130:8080/first-rate-games/game/top?year=2016&genre=Sports&responseType=json`
 
 |Field|Type|Description|
+|-----|:----:|:---------------:|
 |genre|String|Name of the genre|
 |year|Integer|Year of release|
 |returnType|String|Type|
@@ -18,13 +21,13 @@
 
 
 ###Example JSON Response
-`{
-  "id": 15909,
-  "name": "The Bug Butcher",
-  "genres": [
-    33,
-    32
-  ],
-  "first_release_date": 2016
-}`
+`{  
+  "id": 15909,  
+  "name": "The Bug Butcher",  
+  "genres": [  
+    33,  
+    32  
+  ],  
+  "first_release_date": 2016  
+}`  
 
