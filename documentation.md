@@ -25,12 +25,7 @@
 ###Server Error 500
 |Field|Type|Description|
 |-----|----|---------------|
-|id|Int|API id|
-|name|String|Name of the game|
-|rating|Double|Rating based on critics & users (if available)|
-|genres|Integer[]|What genres the game is|
-|first_release_date|Integer|Year game was first released|
-
+|error|String|Error message|
 
 ###Example JSON Response
 ```json
