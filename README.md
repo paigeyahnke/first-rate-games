@@ -22,7 +22,7 @@ one of the top rated games for the year the user has entered.
 
 ## [Documentation](documentation.md)
 
-##[Presentation](First-Rate-Games.pptx)
+##[Presentation](First-Rate-Games.pdf)
 
 ### Team Awesomeness
 - Bao Vue  
