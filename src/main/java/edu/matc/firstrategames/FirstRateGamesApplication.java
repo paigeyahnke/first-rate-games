@@ -8,14 +8,20 @@ import java.util.Set;
 //Defines the base URI for all resource URIs.
 @ApplicationPath("game")
 
-//The java class declares root resource and provider classes
+/**
+ * The java class declares root resource and provider classes
+ */
 public class FirstRateGamesApplication extends Application {
 
-    //The method returns a non-empty collection with classes, that must be included in the published JAX-RS application
+
+    /**
+     * Returns a non-empty collection with classes, that must be included in the published JAX-RS application
+     * @return collection of classes
+     */
     @Override
     public Set<Class<?>> getClasses() {
-        HashSet h = new HashSet<Class<?>>();
-        h.add(GameController.class);
-        return h;
+        HashSet classes = new HashSet<Class<?>>();
+        classes.add(GameController.class);
+        return classes;
     }
 }
