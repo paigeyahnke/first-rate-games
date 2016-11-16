@@ -68,3 +68,10 @@ pre {
     margin: 1em;
     color: white;
 }
+
+a {
+    color: lightgrey;
+    font-size: .8em;
+    margin: .5em;
+    text-decoration: none;
+}

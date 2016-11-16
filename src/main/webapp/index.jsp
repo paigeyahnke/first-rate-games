@@ -87,6 +87,11 @@ for demonstration purposes
         <br />
 
         <button>Get Game</button>
+
+        <br />
+        <br />
+        <a href="${pageContext.request.contextPath}/Javadoc/">View JavaDoc</a> |
+        <a href="https://github.com/paigeyahnke/first-rate-games/blob/master/documentation.md">API Documentation</a>
     </form>
 
     <div></div>
