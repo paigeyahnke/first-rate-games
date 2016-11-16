@@ -11,6 +11,16 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
+
+/**
+ * This is the POJO class. The Game Controller class uses the information here so it can map the JSON response
+ * into a Java object and return a response format in JSON or HTML.
+ *
+ */
+
+
+
+
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @Generated("org.jsonschema2pojo")
 @JsonPropertyOrder({
@@ -136,6 +146,12 @@ public class Game {
         this.releaseYear = releaseDate.getYear();
     }
 
+
+    /**
+     * This is what the game response will return if the data reponse is JSON
+     *
+     * @return information about the game
+     */
     @Override
     public String toString() {
         return "Game{" +
@@ -147,6 +163,12 @@ public class Game {
                 '}';
     }
 
+
+    /**
+     * This is what the game response will return if the data reponse is HTML
+     *
+     * @return information about the game
+     */
     public String toHTML() {
         String html = "<div class='firstRateGame' id='" + id + "'>"
                 + "<h4 id='gameName'>Name: " + name + "</h4>";

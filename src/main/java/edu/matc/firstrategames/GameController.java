@@ -18,6 +18,12 @@ import java.util.Properties;
 
 /**
  * Created by Bo on 10/17/2016.
+ *
+ * This class controls the request and response of the game. It will process the GET request by grabbing the user's
+ * entry of year, genre, and response type. It will load those values along with info from the properties files
+ * and submit that to IGDB's API. IGDB will return JSON which will then map to the Game object and return output
+ * to the UI.
+ *
  */
 @Path("/top")
 public class GameController {
@@ -30,11 +36,11 @@ public class GameController {
 
     /**
      * The Java method will process HTTP GET requests and call other methods
-     * in order to complete this request
+     * in order to complete this request. This will map the JSON response to the Game class.
      *
-     * @param genre
-     * @param year
-     * @param responseType
+     * @param genre the user entered genre
+     * @param year the user entered year
+     * @param responseType the response typer the user prefers
      */
     @GET
     @Produces(MediaType.APPLICATION_JSON)
@@ -94,7 +100,8 @@ public class GameController {
 
 
     /**
-     * This method will get the response from igdb
+     * This method will get the response from IGDB by sending info from the properties file
+     * and the user request to the IGDB API
      *
      */
     public String getResponseFromIgdb() {
@@ -134,6 +141,9 @@ public class GameController {
 
     /**
      * This method will map the JSON response to a java object
+     *
+     * @return the value that has been mapped to the Game Class
+     * @param gameResponse the response from the IGDB API
      *
      */
     public Game[] mapGameResponse(String gameResponse) throws IOException {
