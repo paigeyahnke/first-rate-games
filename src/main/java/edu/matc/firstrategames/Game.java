@@ -5,6 +5,7 @@ import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.TreeMap;
 import javax.annotation.Generated;
@@ -40,9 +41,8 @@ public class Game {
     private int releaseYear;
 
     /**
-     *
-     * @return
-     * The id
+     * Getter for game id.
+     * @return id of the game
      */
     @JsonProperty("id")
     public Integer getId() {
@@ -50,9 +50,8 @@ public class Game {
     }
 
     /**
-     *
-     * @param id
-     * The id
+     * Setter of the game id
+     * @param id game id
      */
     @JsonProperty("id")
     public void setId(Integer id) {
@@ -60,9 +59,8 @@ public class Game {
     }
 
     /**
-     *
-     * @return
-     * The name
+     * Getter of the game name
+     * @return game name
      */
     @JsonProperty("name")
     public String getName() {
@@ -70,9 +68,8 @@ public class Game {
     }
 
     /**
-     *
-     * @param name
-     * The name
+     * Setter of the game name
+     * @param name game name
      */
     @JsonProperty("name")
     public void setName(String name) {
@@ -80,9 +77,8 @@ public class Game {
     }
 
     /**
-     *
-     * @return
-     * The rating
+     * Getter of the game rating
+     * @return game rating
      */
     @JsonProperty("rating")
     public Double getRating() {
@@ -90,9 +86,8 @@ public class Game {
     }
 
     /**
-     *
-     * @param rating
-     * The rating
+     * Setter of the game rating
+     * @param rating game rating
      */
     @JsonProperty("rating")
     public void setRating(Double rating) {
@@ -100,9 +95,8 @@ public class Game {
     }
 
     /**
-     *
-     * @return
-     * The genres
+     * Getter of the genre list
+     * @return list of genre names
      */
     @JsonProperty("genres")
     public List<String> getGenres() {
@@ -111,8 +105,7 @@ public class Game {
 
     /**
      * Accepts the list of integers representing genres and stores their associated names.
-     * @param genres
-     * The genres
+     * @param genres list of genre ids
      */
     @JsonProperty("genres")
     public void setGenres(List<Integer> genres) {
@@ -126,13 +119,13 @@ public class Game {
             }
         }
 
+        Collections.sort(currentGenres);
         this.genres = currentGenres;
     }
 
     /**
-     *
-     * @return
-     * The releaseYear
+     * Getter of the release year
+     * @return year of first release
      */
     @JsonProperty("first_release_date")
     public int getReleaseYear() {
@@ -140,8 +133,8 @@ public class Game {
     }
 
     /**
-     *
-     * @param releaseYear
+     * The setter of the year of release.
+     * @param releaseYear epoch release date
      * The first_release_date
      */
     @JsonProperty("first_release_date")
@@ -149,7 +142,6 @@ public class Game {
         LocalDate releaseDate = Instant.ofEpochMilli(releaseYear).atZone(ZoneId.systemDefault()).toLocalDate();
         this.releaseYear = releaseDate.getYear();
     }
-
 
     /**
      * Returns the game information, formatted as JSON

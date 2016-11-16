@@ -27,11 +27,6 @@ import java.util.Properties;
 @Path("/top")
 public class GameController {
     private final Logger log = Logger.getLogger(this.getClass());
-    Properties properties;
-    Properties genres;
-    String genre;
-    Integer year;
-    String responseType;
 
     /**
      * The Java method will process HTTP GET requests and call other methods
@@ -47,19 +42,11 @@ public class GameController {
                                 @QueryParam("year") Integer year,
                                 @QueryParam("responseType") String responseType) throws IOException {
 
-        //allow for global access
-        this.genre = genre;
-        this.year = year;
-        this.responseType = responseType;
-
         log.info("Genre: " + genre + " | Year: " + year);
         log.info("Epoch Year Min: " + Utilities.firstOfYearEpoch(year));
         log.info("Epoch Year Max: " + Utilities.firstOfYearEpoch(year + 1));
 
-        properties = Utilities.loadProperties("properties.properties");
-        genres = Utilities.loadProperties("genres.properties");
-
-        String response = getResponseFromIgdb();
+        String response = getResponseFromIgdb(genre, year, responseType);
 
         if (response != null) {
             Game[] games = mapGameResponse(response);
@@ -81,7 +68,10 @@ public class GameController {
      * and the user request to the IGDB API
      *
      */
-    public String getResponseFromIgdb() {
+    public String getResponseFromIgdb(String genre, Integer year, String responseType) {
+        Properties properties = Utilities.loadProperties("properties.properties");
+        Properties genres = Utilities.loadProperties("genres.properties");
+
         // initialize properties
         String url = properties.getProperty("igdbURL");
         String fields = properties.getProperty("igdbFields");

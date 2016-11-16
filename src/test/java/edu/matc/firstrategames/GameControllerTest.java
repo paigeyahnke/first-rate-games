@@ -19,17 +19,34 @@ import static org.junit.Assert.*;
 public class GameControllerTest {
     private final Logger logger = Logger.getLogger(this.getClass());
 
+    /**
+     * Verifies that IDGB is sending a response back.
+     */
     @Test
     public void testGetResponseFromIgdb() throws IOException {
         logger.info("Testing IDGB response.");
 
         GameController testGame = new GameController();
-        testGame.getMessage("Adventure", 2015, "json");
+        String response = testGame.getResponseFromIgdb("Adventure", 2015, "json");
 
+        assertNotNull("No response", response);
+    }
 
-        Game game = testGame.mapGameResponse(testGame.getResponseFromIgdb())[0];
+    /**
+     * Verify game attributes are accessible after mapping
+     */
+    @Test
+    public void testGameMapper() throws IOException {
+        logger.info("Testing IDGB response.");
 
-        assertNotNull("No response", game);
+        GameController testGame = new GameController();
+        String response = testGame.getResponseFromIgdb("Adventure", 2015, "json");
+
+        Game game = testGame.mapGameResponse(response)[0];
+        assertNotNull("Game is missing name", game.getName());
+        assertNotNull("Game is missing genres", game.getGenres());
+        assertNotNull("Game is missing release year", game.getReleaseYear());
+
     }
 
 }
