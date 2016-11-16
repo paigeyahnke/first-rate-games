@@ -56,8 +56,9 @@ public class GameController {
         log.info("Epoch Year Min: " + Utilities.firstOfYearEpoch(year));
         log.info("Epoch Year Max: " + Utilities.firstOfYearEpoch(year + 1));
 
-        //call other methods to complete request
-        loadProperties();
+        properties = Utilities.loadProperties("properties.properties");
+        genres = Utilities.loadProperties("genres.properties");
+
         String response = getResponseFromIgdb();
 
         if (response != null) {
@@ -74,29 +75,6 @@ public class GameController {
         }
 
     }
-
-    /**
-     * This method loads the values from the properties file
-     *
-     */
-    public void loadProperties() throws IOException {
-        // load properties
-        ClassLoader loader = Thread.currentThread().getContextClassLoader();
-        properties = new Properties();
-        try (InputStream resourceStream = loader.getResourceAsStream("properties.properties")) {
-            log.info("Loading properties...");
-            properties.load(resourceStream);
-        }
-
-        // load genres properties
-        genres = new Properties();
-        try (InputStream resourceStream = loader.getResourceAsStream("genres.properties")) {
-            log.info("Loading genres properties...");
-            genres.load(resourceStream);
-        }
-
-    }
-
 
     /**
      * This method will get the response from IGDB by sending info from the properties file

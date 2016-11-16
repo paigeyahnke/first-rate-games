@@ -36,11 +36,7 @@ public class DemoController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         ClassLoader loader = Thread.currentThread().getContextClassLoader();
 
-        Properties genreProperties = new Properties();
-        try (InputStream resourceStream = loader.getResourceAsStream("genres.properties")) {
-            log.info("Loading genres properties...");
-            genreProperties.load(resourceStream);
-        }
+        Properties genreProperties = Utilities.loadProperties("genres.properties");
 
         TreeSet<String> genres = new TreeSet<>();
         for (Object genre : genreProperties.keySet()) {
