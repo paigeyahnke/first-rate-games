@@ -21,7 +21,7 @@
 
 
 ###Example JSON Response
-`{  
+```{  
   "id": 15909,  
   "name": "The Bug Butcher",  
   "genres": [  
@@ -29,5 +29,5 @@
     32  
   ],  
   "first_release_date": 2016  
-}`  
+}```  
 
