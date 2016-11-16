@@ -90,7 +90,7 @@ for demonstration purposes
 
         <br />
         <br />
-        <a href="${pageContext.request.contextPath}/Javadoc/">View JavaDoc</a> |
+        <a href="${pageContext.request.contextPath}/javadoc/">View JavaDoc</a> |
         <a href="https://github.com/paigeyahnke/first-rate-games/blob/master/documentation.md">API Documentation</a>
     </form>
 
