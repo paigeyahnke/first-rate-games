@@ -6,7 +6,9 @@ import java.time.ZoneId;
 import java.util.Random;
 
 /**
- * Created by Bo on 10/31/2016.
+ * This is the utilities class that will hold general methods.
+ * Created on 10/31/2016.
+ * @author Bo
  */
 public class Utilities {
 
@@ -22,6 +24,10 @@ public class Utilities {
                 .toEpochSecond() * 1000;
     }
 
+    /**
+     * Returns a random number
+     * @return random number
+     */
     public static int getRandomNumber() {
 
         Random r = new Random();

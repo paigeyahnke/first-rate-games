@@ -17,10 +17,6 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
  * into a Java object and return a response format in JSON or HTML.
  *
  */
-
-
-
-
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @Generated("org.jsonschema2pojo")
 @JsonPropertyOrder({
@@ -31,9 +27,6 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
         "first_release_date"
 })
 public class Game {
-
-    // TODO rework to return real dates (just the year) and possibly genre
-
     @JsonProperty("id")
     private Integer id;
     @JsonProperty("name")
@@ -148,7 +141,7 @@ public class Game {
 
 
     /**
-     * This is what the game response will return if the data reponse is JSON
+     * Returns the game information, formatted as JSON
      *
      * @return information about the game
      */
@@ -165,7 +158,7 @@ public class Game {
 
 
     /**
-     * This is what the game response will return if the data reponse is HTML
+     * Returns the game information, formatted as HTML
      *
      * @return information about the game
      */

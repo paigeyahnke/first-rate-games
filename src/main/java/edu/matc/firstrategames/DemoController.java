@@ -14,7 +14,9 @@ import java.lang.reflect.Array;
 import java.util.*;
 
 /**
- * Created by paige on 11/6/16.
+ * This is the controller for the demo. It accepts the form input and passes the result back.
+ * Created on 11/6/16
+ * @author Paige Yahnke
  */
 @WebServlet(
         name = "demo",
@@ -23,6 +25,13 @@ import java.util.*;
 public class DemoController extends HttpServlet {
     private final Logger log = Logger.getLogger(this.getClass());
 
+    /**
+     * The do get method for the demo controller. Receives input from form and returns the response.
+     * @param request request received
+     * @param response response to send
+     * @throws ServletException
+     * @throws IOException
+     */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         ClassLoader loader = Thread.currentThread().getContextClassLoader();
