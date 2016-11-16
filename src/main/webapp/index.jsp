@@ -46,7 +46,7 @@ for demonstration purposes
             } else {
                 // display json response
                 $.get('/game/top', $('#game-form').serialize(), function (data) {
-                    alert(data);
+                    //alert(data);
                     $('#response').html(data);
                 }, 'html');
             }
