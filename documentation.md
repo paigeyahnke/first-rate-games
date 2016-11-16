@@ -32,15 +32,14 @@
 HTTP/1.1 200 Success
 
 {
-  "id": 4756,
-  "name": "Child of Light",
-  "rating": 88.68588498563096,
+  "id": 14548,
+  "name": "Borderlands: The Handsome Collection",
+  "rating": 84.51020408163266,
   "genres": [
-    8,
-    12,
-    16
+    "RPG",
+    "Shooter"
   ],
-  "first_release_date": 2014
+  "first_release_date": 2015
 }
 ```  
 
@@ -55,15 +54,12 @@ HTTP/1.1 500 Server Error
 
 ###Example HTML Response
 ```html
-<div class='firstRateGame' id='12517'>
-  <h4 id='gameName'>Name: Undertale</h4>
-  <h4 id='gameRating'>Rating: 92/100</h4>
+<div class='firstRateGame' id='2366'>
+  <h4 id='gameName'>Name: Xenoblade Chronicles X</h4>
+  <h4 id='gameRating'>Rating: 97/100</h4>
   <h4 id='gameGenres'>Genres: </h4>
   <ul id='gameGenreList'>
-    <li>12</li>
-    <li>31</li>
-    <li>32</li>
-    <li>16</li>
+    <li>RPG</li>
   </ul>
   <h4 id='gameReleaseYear'>Year: 2015</h4>
 </div>
