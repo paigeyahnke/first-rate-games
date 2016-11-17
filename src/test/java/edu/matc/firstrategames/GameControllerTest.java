@@ -3,6 +3,7 @@ package edu.matc.firstrategames;
 import org.apache.log4j.Logger;
 import org.junit.Test;
 
+import javax.ws.rs.core.Response;
 import java.io.IOException;
 
 import static org.junit.Assert.*;
@@ -47,6 +48,22 @@ public class GameControllerTest {
         assertNotNull("Game is missing genres", game.getGenres());
         assertNotNull("Game is missing release year", game.getReleaseYear());
 
+    }
+
+    /**
+     * Verify that our API returns json representing a game object
+     * @throws IOException
+     */
+    @Test
+    public void testOverallAPICall() throws IOException {
+        GameController testGame = new GameController();
+        Response response = testGame.getMessage("RPG", 2015, "json");
+
+        int status = response.getStatus();
+        assertEquals("Invalid reponse code", 200, status);
+
+        Game game = (Game) response.getEntity();
+        assertNotNull("No game object returned", game);
     }
 
 }
